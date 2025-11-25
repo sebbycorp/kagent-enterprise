@@ -33,9 +33,32 @@ Before getting started, ensure you have the following installed:
 - **kubectl** - Kubernetes CLI
 - **helm** - Kubernetes package manager
 - **kind** - Kubernetes in Docker
+- **cloud-provider-kind** - LoadBalancer support for Kind (install with `brew install cloud-provider-kind` and run with `sudo cloud-provider-kind`)
 - **arctl** - Agent Registry CLI (installation instructions in [registry documentation](./registry/README.md))
 - **Python 3.12+** - For MCP server development
 - **uv** - Modern Python package manager (recommended for MCP development)
+
+### Installing Prerequisites with Homebrew
+
+```bash
+# Install core tools
+brew install kubectl helm kind cloud-provider-kind
+
+# Install Python package manager (optional, for MCP development)
+pip install uv
+```
+
+### Running cloud-provider-kind
+
+The `cloud-provider-kind` service provides LoadBalancer IP addresses for Kind clusters:
+
+```bash
+# Start cloud-provider-kind (requires sudo)
+sudo cloud-provider-kind
+
+# This should be running in a separate terminal while using the cluster
+# It will automatically assign LoadBalancer IPs to services
+```
 
 ### Environment Variables
 

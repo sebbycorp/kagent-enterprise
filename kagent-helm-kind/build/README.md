@@ -32,14 +32,21 @@ Install the following tools before proceeding:
 # Docker Desktop (or equivalent)
 # Download from: https://www.docker.com/products/docker-desktop
 
-# kubectl - Kubernetes CLI
-brew install kubectl
+# Install core Kubernetes tools
+brew install kubectl helm kind cloud-provider-kind
+```
 
-# helm - Kubernetes package manager
-brew install helm
+> **Note**: `cloud-provider-kind` provides LoadBalancer support for Kind clusters by automatically assigning IP addresses to LoadBalancer services.
 
-# kind - Kubernetes in Docker
-brew install kind
+### Start cloud-provider-kind
+
+Before creating the cluster, start the cloud-provider-kind service (requires sudo):
+
+```bash
+# Run in a separate terminal - keep this running
+sudo cloud-provider-kind
+
+# This process must remain running to provide LoadBalancer IPs
 ```
 
 ### Verify Installation
@@ -49,6 +56,7 @@ docker --version
 kubectl version --client
 helm version
 kind version
+cloud-provider-kind --version
 ```
 
 ### Environment Variables
